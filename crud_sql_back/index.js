@@ -3,12 +3,15 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const db = require("./models");
 const posts = require("./routes/Posts");
+const users = require("./routes/UserAuth");
 
-dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
+dotenv.config();
 
+// USERS
+app.use("/auth", users);
 // POSTS
 app.use("/post", posts);
 
